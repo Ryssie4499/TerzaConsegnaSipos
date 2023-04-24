@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class GameManager : MonoBehaviour
+[CreateAssetMenu(fileName = "GameManager", menuName = "ScriptableObjects/Managers/GameManager")]
+public class GameManager : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum GameStatus
     {
-        
+        gameStart,
+        gameRunning,
+        gamePaused,
+        gameEnd
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameStatus gameStatus;
 }
