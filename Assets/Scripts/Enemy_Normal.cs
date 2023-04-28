@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Normal : MonoBehaviour
+public class Enemy_Normal : EnemyManager
 {
     // Start is called before the first frame update
     void Start()
