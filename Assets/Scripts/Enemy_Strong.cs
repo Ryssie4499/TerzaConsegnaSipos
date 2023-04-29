@@ -15,4 +15,5 @@ public class Enemy_Strong : EnemyManager
     {
         
     }
+    
 }
