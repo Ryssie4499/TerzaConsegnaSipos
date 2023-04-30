@@ -252,6 +252,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5977256269606548420}
+  - component: {fileID: 7480342940226678187}
+  - component: {fileID: -1510710861772441914}
   m_Layer: 0
   m_Name: Totem1
   m_TagString: Untagged
@@ -280,6 +282,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.208, y: 276.778, z: -0.978}
+--- !u!136 &7480342940226678187
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6465104474459318654}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 20
+  m_Height: 20
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.15, z: 0}
+--- !u!114 &-1510710861772441914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6465104474459318654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a09eb7d0113e104987dce5aded5645c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cc: {fileID: 7480342940226678187}
+  range: 20
+  rotationSpeed: 8
+  targetsInRange: []
 --- !u!1 &6842551242160383563
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9042751249349695467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.024, y: 1.397, z: -0.005}
+  m_LocalPosition: {x: -0.023, y: 1.312, z: -0.005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5977256269606548420}

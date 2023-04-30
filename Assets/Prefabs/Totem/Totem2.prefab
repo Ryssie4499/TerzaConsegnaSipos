@@ -106,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4003446732684493386}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.038, y: 1.8, z: 0.058}
+  m_LocalPosition: {x: -0.04, y: 1.68, z: 0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4802035391987128421}
@@ -215,6 +215,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4802035391987128421}
+  - component: {fileID: -6732443259464796153}
+  - component: {fileID: -6795499921554600524}
   m_Layer: 0
   m_Name: Totem2
   m_TagString: Untagged
@@ -243,6 +245,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.208, y: 276.778, z: -0.978}
+--- !u!136 &-6732443259464796153
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327636397955171039}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 15
+  m_Height: 15
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.15, z: 0}
+--- !u!114 &-6795499921554600524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327636397955171039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15db44c50dd797c4eb650d6576c17a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cc: {fileID: -6732443259464796153}
+  range: 15
+  rotationSpeed: 8
+  targetsInRange: []
 --- !u!1 &5664765379298483188
 GameObject:
   m_ObjectHideFlags: 0
