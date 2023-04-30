@@ -25,6 +25,7 @@ public class InputManager : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, placeMask))
             {
                 Instantiate(turrets[num], hit.transform.position, Quaternion.identity);
+                Destroy(hit.transform.gameObject);
                 placeIt = false;
             }
         }
