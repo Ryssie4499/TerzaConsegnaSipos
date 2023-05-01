@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet_Bursts : MonoBehaviour
+public class Bullet_Bursts : trackingBullet
 {
     // Start is called before the first frame update
     void Start()

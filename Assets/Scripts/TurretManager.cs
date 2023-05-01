@@ -27,12 +27,6 @@ public class TurretManager : MonoBehaviour
         cc.height = range;
     }
 
-    private void Start()
-    {
-
-    }
-
-
     private void Update()
     {
         CheckTargetsInRange();
@@ -64,19 +58,20 @@ public class TurretManager : MonoBehaviour
 
     void CheckTargetsInRange()
     {
-        foreach (EnemyManager enemy in targetsInRange)
+        for(int index = 0; index<targetsInRange.Count; index++)
         {
-            if (enemy.health <= 0)
+            if (targetsInRange[index].health <= 0)
             {
-                targetsInRange.Remove(enemy);
+                targetsInRange.Remove(targetsInRange[index]);
             }
         }
+        
     }
 
     void GetClosest(ref EnemyManager target)
     {
         target = null;
-        foreach (EnemyManager enemy in targetsInRange) // 2
+        foreach (EnemyManager enemy in targetsInRange)
         {
             if (target == null)
             {

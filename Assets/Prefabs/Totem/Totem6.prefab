@@ -136,9 +136,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cc: {fileID: -4994607524317423835}
   range: 15
-  rateOfFire: 2
+  rateOfFire: 0.5
   bullet: {fileID: 7433560916124248661, guid: 994ea3a9e719907489b5fbe88c6f0b40, type: 3}
-  bulletDamage: 0
+  bulletDamage: 1
   bulletSpeed: 2
   rotationSpeed: 8
   targetsInRange: []

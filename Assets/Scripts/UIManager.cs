@@ -16,7 +16,6 @@ public class UIManager : MonoBehaviour
         if(IM.placeIt)
         {
             IM.Placement(num);
-            //placeIt = false;
         }
     }
 

@@ -47,11 +47,11 @@ public class BuffManager : MonoBehaviour
 
     protected virtual void CheckTargetsInRange()
     {
-        foreach (EnemyManager enemy in targetsInRange)
+        for(int index = 0; index<targetsInRange.Count; index++)
         {
-            if (enemy.health <= 0)
+            if (targetsInRange[index].health <= 0)
             {
-                targetsInRange.Remove(enemy);
+                targetsInRange.Remove(targetsInRange[index]);
             }
         }
     }
@@ -59,7 +59,7 @@ public class BuffManager : MonoBehaviour
     protected virtual void GetClosest(ref EnemyManager target)
     {
         target = null;
-        foreach (EnemyManager enemy in targetsInRange) // 2
+        foreach (EnemyManager enemy in targetsInRange)
         {
             if (target == null)
             {

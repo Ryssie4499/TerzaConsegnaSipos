@@ -59,7 +59,7 @@ MonoBehaviour:
   enemiesCount: 0
   movementSpeed: 0.6
   rotationSpeed: 6
-  health: 7
+  health: 10
   index: 0
 --- !u!54 &9064354237478261721
 Rigidbody:

@@ -10,12 +10,11 @@ public class trackingBullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log("Update");
         transform.position =  Vector3.MoveTowards(transform.position, target.transform.position, bulletSpeed);
 
         if(transform.position == target.transform.position)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
@@ -31,7 +30,7 @@ public class trackingBullet : MonoBehaviour
         if(other.gameObject == target.gameObject)
         {
             other.GetComponent<EnemyManager>().Damage(bulletDamage);
-            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
         }
     }
 }

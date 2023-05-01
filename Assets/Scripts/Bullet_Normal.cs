@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet_Normal : MonoBehaviour
+public class Bullet_Normal : trackingBullet
 {
     // Start is called before the first frame update
     void Start()
