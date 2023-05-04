@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    public static event Action OnFinishLineReached;
+    public static event Action OnEnemyDeath;
     public GameManager GM;
     [SerializeField]
     public GameObject[] patrolPoints; 
@@ -48,6 +51,7 @@ public class EnemyManager : MonoBehaviour
         if (health <= 0)
         {
             gameObject.SetActive(false);
+            OnEnemyDeath?.Invoke();
         }
     }
     public void OnTriggerEnter(Collider other)
@@ -55,6 +59,7 @@ public class EnemyManager : MonoBehaviour
         if (other.CompareTag("Village"))
         {
             Destroy(gameObject);
+            OnFinishLineReached?.Invoke();
         }
     }
 }

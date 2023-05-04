@@ -5,27 +5,36 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] Enemies;
-    public float timer;
-    public float changeTimer;
-    public float rate;
+    public float rate = 6;
+    public float rateIncreasing = 0.5f;
+    public int callsBeforeRateIncrease = 20;
+    float rateTimer;
+    int callCounter = 0;
     void Start()
     {
-
+        rateTimer = rate;
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
-        changeTimer += Time.deltaTime;
-        if(changeTimer>=50)
+        rateTimer -= Time.deltaTime;
+        if (rateTimer <= 0)
         {
-            rate = 2.5f;
+            SpawnEnemies();
         }
-        if (timer >= rate)
-        {
-            Instantiate(Enemies[Random.Range(0, Enemies.Length)], transform.position, Quaternion.identity);
+    }
 
-            timer = 0;
+    void SpawnEnemies()
+    {
+        callCounter++;                                                              //ad ogni spawn aumenta il conteggio e quando raggiunge quello di rateIncrease, aumenta il rate
+
+        GameObject Enemy = Instantiate(Enemies[Random.Range(0, Enemies.Length)], transform.position, Quaternion.identity);
+
+        if (callCounter >= callsBeforeRateIncrease && rate >= 4 * rateIncreasing)   //il rate si velocizza solo fin quando sarà maggiore di zero, dopo non ha più senso (auguri a chiudere i popup alla velocità della luce)
+        {
+            rate -= rateIncreasing;
+            callCounter = 0;
         }
+        rateTimer = rate;
     }
 }
