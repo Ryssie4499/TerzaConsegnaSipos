@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 8322203986371099789}
   m_Layer: 0
   m_Name: Totem4
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cc: {fileID: 8322203986371099789}
-  range: 15
+  range: 8
   rateOfFire: 2
   bullet: {fileID: 7433560916124248661, guid: 994ea3a9e719907489b5fbe88c6f0b40, type: 3}
   bulletDamage: 4
@@ -475,8 +475,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 15
-  m_Height: 15
+  m_Radius: 8
+  m_Height: 8
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7334137382973056565

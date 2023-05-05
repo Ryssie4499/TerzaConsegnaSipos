@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,19 +13,12 @@ public class BuffManager : MonoBehaviour
     public float range;
     public float rotationSpeed;
     public List<EnemyManager> targetsInRange = new List<EnemyManager>();
-
     protected virtual void OnValidate()
     {
         cc.radius = range;
         cc.height = range;
     }
-
-    private void Start()
-    {
-
-    }
-
-
+    
     protected virtual void Update()
     {
         CheckTargetsInRange();
@@ -47,7 +41,7 @@ public class BuffManager : MonoBehaviour
 
     protected virtual void CheckTargetsInRange()
     {
-        for(int index = 0; index<targetsInRange.Count; index++)
+        for (int index = 0; index < targetsInRange.Count; index++)
         {
             if (targetsInRange[index].health <= 0)
             {
@@ -91,4 +85,5 @@ public class BuffManager : MonoBehaviour
         if (other.CompareTag("Enemy"))
             targetsInRange.Remove(other.GetComponent<EnemyManager>());
     }
+    
 }

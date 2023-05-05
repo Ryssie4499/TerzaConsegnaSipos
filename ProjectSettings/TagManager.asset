@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Village
   - Enemy
+  - Turret
   layers:
   - Default
   - TransparentFX

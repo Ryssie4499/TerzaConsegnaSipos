@@ -10,8 +10,6 @@ public class EnemyManager : MonoBehaviour
     public GameManager GM;
     [SerializeField]
     public GameObject[] patrolPoints; 
-    
-    public int enemiesCount;
 
     public float movementSpeed; // velocity molt
     public float rotationSpeed;
@@ -20,7 +18,6 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         transform.position = patrolPoints[0].transform.position;
-        enemiesCount++;
     }
 
     void FixedUpdate()

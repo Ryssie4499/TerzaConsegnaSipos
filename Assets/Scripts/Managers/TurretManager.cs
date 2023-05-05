@@ -6,7 +6,6 @@ public class TurretManager : MonoBehaviour
 {
     private EnemyManager target;
 
-
     public CapsuleCollider cc;
 
     [Header("Setup Turret:")]
@@ -18,9 +17,7 @@ public class TurretManager : MonoBehaviour
     public float bulletDamage;
     public float bulletSpeed;
     public float rotationSpeed;
-
     public List<EnemyManager> targetsInRange = new List<EnemyManager>();
-
     private void OnValidate()
     {
         cc.radius = range;
@@ -123,6 +120,4 @@ public class TurretManager : MonoBehaviour
         if (other.CompareTag("Enemy"))
             targetsInRange.Remove(other.GetComponent<EnemyManager>());
     }
-
-
 }

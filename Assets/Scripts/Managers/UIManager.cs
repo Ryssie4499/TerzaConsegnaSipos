@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public Text enemies;
     public GameObject[] lights;
     public Image[] hearts;
     public int numOfHearts;
@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
+        enemies.text = StatsManager.Instance.Score.ToString();
+
         if (IM.placeIt)
         {
             IM.Placement(num);
