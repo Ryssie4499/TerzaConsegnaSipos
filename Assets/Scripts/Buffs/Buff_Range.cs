@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class Buff_Range : BuffManager
 {
-    TurretManager tM;
+    BuffPositionCheck bpC;
     private void Start()
     {
-        tM = FindObjectOfType<TurretManager>();
-        tM.range += 4;
+        bpC = FindObjectOfType<BuffPositionCheck>();
+    }
+    protected override void Update()
+    {
+        if (GM.gameStatus == GameManager.GameStatus.gameRunning)
+        {
+            base.Update();
+
+            foreach (TurretManager turret in bpC.turretComponents)
+            {
+                turret.range = 12;
+            }
+        }
     }
 }

@@ -9,7 +9,8 @@ public class GameManager : ScriptableObject
         gameStart,
         gameRunning,
         gamePaused,
-        gameEnd
+        gameEnd,
+        Guide
     }
     public GameStatus gameStatus;
 }

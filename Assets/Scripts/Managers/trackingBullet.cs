@@ -7,14 +7,17 @@ public class trackingBullet : MonoBehaviour
     public EnemyManager target;
     public float bulletSpeed;
     public float bulletDamage;
-
-    void FixedUpdate()
+    public GameManager GM;
+    protected virtual void FixedUpdate()
     {
-        transform.position =  Vector3.MoveTowards(transform.position, target.transform.position, bulletSpeed);
-
-        if(transform.position == target.transform.position)
+        if (GM.gameStatus == GameManager.GameStatus.gameRunning)
         {
-            Destroy(gameObject);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position + new Vector3(0, 5, 0), bulletSpeed);
+
+            if (transform.position == target.transform.position + new Vector3(0, 5, 0))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -27,7 +30,7 @@ public class trackingBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject == target.gameObject)
+        if (other.gameObject == target.gameObject)
         {
             other.GetComponent<EnemyManager>().Damage(bulletDamage);
             Destroy(this.gameObject);

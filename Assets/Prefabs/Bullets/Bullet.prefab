@@ -128,3 +128,4 @@ MonoBehaviour:
   target: {fileID: 5503926974258218202, guid: 5c95d0a5faf81cd45baa6bad0d2a38e6, type: 3}
   bulletSpeed: 2
   bulletDamage: 1
+  GM: {fileID: 11400000, guid: 0d82f9c9e7433ba43bfff5fc00ded3ca, type: 2}

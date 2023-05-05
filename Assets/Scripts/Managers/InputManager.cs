@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     public GameObject Monkey, Duck, Elephant, Frog, Eagle, Koala;
     public float timer;
     UIManager UM;
+    public GameManager GM;
     void Start()
     {
         UM = FindObjectOfType<UIManager>();
@@ -20,31 +21,34 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (placementCounter == 2)
+        if (GM.gameStatus == GameManager.GameStatus.gameRunning)
         {
-            Duck.SetActive(false);
-            Eagle.SetActive(true);
+            timer += Time.deltaTime;
+            if (placementCounter == 2)
+            {
+                Duck.SetActive(false);
+                Eagle.SetActive(true);
+            }
+            if (placementCounter == 3)
+                Eagle.SetActive(false);
+            if (placementCounter == 3 && timer >= 15)
+                Monkey.SetActive(true);
+            if (placementCounter == 4)
+                Monkey.SetActive(false);
+            if (placementCounter == 4 && timer >= 30)
+                Frog.SetActive(true);
+            if (placementCounter == 5)
+                Frog.SetActive(false);
+            if (placementCounter == 5 && timer >= 40)
+                Elephant.SetActive(true);
+            if (placementCounter == 6)
+            {
+                Elephant.SetActive(false);
+                Koala.SetActive(true);
+            }
+            if (placementCounter == 7)
+                Koala.SetActive(false);
         }
-        if (placementCounter == 3)
-            Eagle.SetActive(false);
-        if (placementCounter == 3 && timer >= 15)
-            Monkey.SetActive(true);
-        if (placementCounter == 4)
-            Monkey.SetActive(false);
-        if (placementCounter == 4 && timer >= 30)
-            Frog.SetActive(true);
-        if (placementCounter == 5)
-            Frog.SetActive(false);
-        if (placementCounter == 5 && timer >= 40)
-            Elephant.SetActive(true);
-        if (placementCounter == 6)
-        {
-            Elephant.SetActive(false);
-            Koala.SetActive(true);
-        }
-        if (placementCounter == 7)
-            Koala.SetActive(false);
     }
     public void Placement(int num)
     {

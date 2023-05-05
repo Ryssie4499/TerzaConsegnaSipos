@@ -12,7 +12,7 @@ public class StatsManager : MonoBehaviour
     public int Health { get; private set; }
     public int Score { get; private set; }
     public int HighScore { get => highScore; }
-    //public GameManager GM;
+    public GameManager GM;
     UIManager uM;
     private void Awake()
     {
@@ -60,6 +60,6 @@ public class StatsManager : MonoBehaviour
     private void GameOver()
     {
         //uM.EndCanvas.SetActive(true);
-        //GM.gameStatus = GameManager.GameStatus.gameEnd;
+        GM.gameStatus = GameManager.GameStatus.gameEnd;
     }
 }

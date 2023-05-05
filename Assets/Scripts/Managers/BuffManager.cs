@@ -13,28 +13,32 @@ public class BuffManager : MonoBehaviour
     public float range;
     public float rotationSpeed;
     public List<EnemyManager> targetsInRange = new List<EnemyManager>();
+    public GameManager GM;
     protected virtual void OnValidate()
     {
         cc.radius = range;
         cc.height = range;
     }
-    
+
     protected virtual void Update()
     {
-        CheckTargetsInRange();
-
-        GetClosest(ref target);
-
-        if (target != null)
+        if (GM.gameStatus == GameManager.GameStatus.gameRunning)
         {
-            target = null;
-        }
-        foreach (EnemyManager enemy in targetsInRange)
-        {
-            Vector3 targetDirection = enemy.transform.position - transform.position;
-            float singleStep = rotationSpeed * Time.deltaTime;
-            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-            transform.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, 0, newDirection.z));
+            CheckTargetsInRange();
+
+            GetClosest(ref target);
+
+            if (target != null)
+            {
+                target = null;
+            }
+            foreach (EnemyManager enemy in targetsInRange)
+            {
+                Vector3 targetDirection = enemy.transform.position - transform.position;
+                float singleStep = rotationSpeed * Time.deltaTime;
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+                transform.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, 0, newDirection.z));
+            }
         }
     }
 
@@ -85,5 +89,5 @@ public class BuffManager : MonoBehaviour
         if (other.CompareTag("Enemy"))
             targetsInRange.Remove(other.GetComponent<EnemyManager>());
     }
-    
+
 }

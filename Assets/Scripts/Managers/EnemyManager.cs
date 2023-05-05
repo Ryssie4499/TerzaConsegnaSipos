@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour
     public static event Action OnEnemyDeath;
     public GameManager GM;
     [SerializeField]
-    public GameObject[] patrolPoints; 
+    public GameObject[] patrolPoints;
 
     public float movementSpeed; // velocity molt
     public float rotationSpeed;
@@ -22,14 +22,15 @@ public class EnemyManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        MoveAround();
+        if (GM.gameStatus == GameManager.GameStatus.gameRunning)
+            MoveAround();
     }
 
     public int index = 0;
     void MoveAround()
     {
         transform.position = Vector3.MoveTowards(transform.position, patrolPoints[index].transform.position, movementSpeed);
-        
+
         Vector3 targetDirection = patrolPoints[index].transform.position - transform.position;
         float singleStep = rotationSpeed * Time.deltaTime;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
@@ -44,16 +45,19 @@ public class EnemyManager : MonoBehaviour
 
     public void Damage(float Damage)
     {
-        health -= Damage;
-        if (health <= 0)
+        if (GM.gameStatus == GameManager.GameStatus.gameRunning)
         {
-            gameObject.SetActive(false);
-            OnEnemyDeath?.Invoke();
+            health -= Damage;
+            if (health <= 0)
+            {
+                gameObject.SetActive(false);
+                OnEnemyDeath?.Invoke();
+            }
         }
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Village"))
+        if (other.CompareTag("Village") && GM.gameStatus == GameManager.GameStatus.gameRunning)
         {
             Destroy(gameObject);
             OnFinishLineReached?.Invoke();

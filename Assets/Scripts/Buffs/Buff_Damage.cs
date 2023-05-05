@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class Buff_Damage : BuffManager
 {
-    TurretManager tM;
+    BuffPositionCheck bpC;
     private void Start()
     {
-        tM = FindObjectOfType<TurretManager>();
-        tM.bulletDamage += 1; 
+        bpC = FindObjectOfType<BuffPositionCheck>();
+    }
+    protected override void Update()
+    {
+        if (GM.gameStatus == GameManager.GameStatus.gameRunning)
+        {
+            base.Update();
+            foreach (TurretManager turret in bpC.turretComponents)
+            {
+                turret.bulletDamage = 4;
+            }
+        }
     }
 }

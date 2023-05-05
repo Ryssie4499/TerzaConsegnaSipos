@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class Buff_Rate : BuffManager
 {
-    TurretManager tM;
+    BuffPositionCheck bpC;
     private void Start()
     {
-        tM = FindObjectOfType<TurretManager>();
-        if (tM.rateOfFire > 1)
-            tM.rateOfFire -= 1;
+        bpC = FindObjectOfType<BuffPositionCheck>();
+    }
+    protected override void Update()
+    {
+        if (GM.gameStatus == GameManager.GameStatus.gameRunning)
+        {
+            base.Update();
+            foreach (TurretManager turret in bpC.turretComponents)
+            {
+                turret.rateOfFire = 0.5f;
+            }
+        }
     }
 }

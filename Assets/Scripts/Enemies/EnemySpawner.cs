@@ -7,9 +7,10 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] Enemies;
     public float rate = 6;
     public float rateIncreasing = 0.5f;
-    public int callsBeforeRateIncrease = 20;
+    public int callsBeforeRateIncrease = 8;
     float rateTimer;
     int callCounter = 0;
+    public GameManager GM;
     void Start()
     {
         rateTimer = rate;
@@ -17,10 +18,13 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        rateTimer -= Time.deltaTime;
-        if (rateTimer <= 0)
+        if (GM.gameStatus == GameManager.GameStatus.gameRunning)
         {
-            SpawnEnemies();
+            rateTimer -= Time.deltaTime;
+            if (rateTimer <= 0)
+            {
+                SpawnEnemies();
+            }
         }
     }
 

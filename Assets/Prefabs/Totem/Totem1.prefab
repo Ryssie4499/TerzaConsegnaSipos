@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretComponents: []
+  GM: {fileID: 11400000, guid: 0d82f9c9e7433ba43bfff5fc00ded3ca, type: 2}
 --- !u!65 &5444368625449707244
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -388,6 +389,7 @@ MonoBehaviour:
   range: 12
   rotationSpeed: 8
   targetsInRange: []
+  GM: {fileID: 11400000, guid: 0d82f9c9e7433ba43bfff5fc00ded3ca, type: 2}
 --- !u!1 &6842551242160383563
 GameObject:
   m_ObjectHideFlags: 0
