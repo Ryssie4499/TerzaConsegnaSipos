@@ -20,7 +20,6 @@ public class trackingBullet : MonoBehaviour
             }
         }
     }
-
     public void SetupBullet(EnemyManager Target, float BulletSpeed, float BulletDamage)
     {
         target = Target;
@@ -28,7 +27,7 @@ public class trackingBullet : MonoBehaviour
         bulletDamage = BulletDamage;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == target.gameObject)
         {

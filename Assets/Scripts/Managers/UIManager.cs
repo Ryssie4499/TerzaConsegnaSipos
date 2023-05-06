@@ -1,20 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject StartCanvas;
     public GameObject GuideCanvas;
-    public Text enemies;
+    public GameObject PauseCanvas;
+    public GameObject EndCanvas;
     public GameObject[] lights;
+
+    public Text enemies;
+    public TextMeshProUGUI record;
+    public TextMeshProUGUI finalScore;
+
     public Image[] hearts;
     public int numOfHearts;
+
+    [HideInInspector] public int num;
     public bool accelerate;
+
     InputManager IM;
     public GameManager GM;
-    [HideInInspector] public int num;
+
     private void Start()
     {
         IM = FindObjectOfType<InputManager>();
@@ -22,10 +33,17 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
+        record.text = StatsManager.Instance.HighScore.ToString();
+        finalScore.text = StatsManager.Instance.Score.ToString();
+
         if (GM.gameStatus == GameManager.GameStatus.gameRunning)
         {
             enemies.text = StatsManager.Instance.Score.ToString();
 
+            if(StatsManager.Instance.Score%20 == 0)
+            {
+                StatsManager.Instance.Healing();
+            }
             if (IM.placeIt)
             {
                 IM.Placement(num);
@@ -53,6 +71,20 @@ public class UIManager : MonoBehaviour
         if (GM.gameStatus == GameManager.GameStatus.gameStart)
         {
             StartCanvas.SetActive(true);
+        }
+        if(GM.gameStatus == GameManager.GameStatus.gameEnd)
+        {
+            EndCanvas.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && GM.gameStatus == GameManager.GameStatus.gameRunning)        //se clicco il tasto ESC e il gioco è in running si attiva il menù di pausa
+        {
+            GM.gameStatus = GameManager.GameStatus.gamePaused;
+            PauseCanvas.SetActive(true);
+        }
+        else if (GM.gameStatus == GameManager.GameStatus.gamePaused && Input.GetKeyDown(KeyCode.Escape))    //se sono in pausa e clicco il tasto ESC
+        {
+            PLAY();                                                                                         //richiamo la funzione che mi permette di tornare in running
         }
     }
 
@@ -115,18 +147,37 @@ public class UIManager : MonoBehaviour
     {
         StartCanvas.SetActive(false);
         GuideCanvas.SetActive(false);
-        Debug.Log("Giocaaaa");
+        PauseCanvas.SetActive(false);
         GM.gameStatus = GameManager.GameStatus.gameRunning;
     }
 
     public void GUIDE()
     {
-        Debug.Log("Guideee");
         StartCanvas.SetActive(false);
+        PauseCanvas.SetActive(false);
         GuideCanvas.SetActive(true);
         GM.gameStatus = GameManager.GameStatus.Guide;
     }
 
+    public void NEXTGUIDE()
+    {
+
+    }
+
+    public void LASTGUIDE()
+    {
+
+    }
+
+    public void RESTART()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void EXIT()
+    {
+        Application.Quit();
+    }
     public void Accelerate()
     {
         if (!accelerate)

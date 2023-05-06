@@ -13,10 +13,8 @@ public class StatsManager : MonoBehaviour
     public int Score { get; private set; }
     public int HighScore { get => highScore; }
     public GameManager GM;
-    UIManager uM;
     private void Awake()
     {
-        uM = FindObjectOfType<UIManager>();
         instance = this;
         Health = 5;
         Score = 0;
@@ -37,7 +35,6 @@ public class StatsManager : MonoBehaviour
     private void TakeDamage()
     {
         Health--;
-        Debug.Log(Health);
 
         if (Health <= 0)
         {
@@ -59,7 +56,6 @@ public class StatsManager : MonoBehaviour
 
     private void GameOver()
     {
-        //uM.EndCanvas.SetActive(true);
         GM.gameStatus = GameManager.GameStatus.gameEnd;
     }
 }

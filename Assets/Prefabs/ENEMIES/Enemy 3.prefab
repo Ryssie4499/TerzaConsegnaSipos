@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4808408129681385818}
-  - component: {fileID: 8556408690134917712}
   - component: {fileID: 9064354237478261721}
   - component: {fileID: -2029877193604334513}
+  - component: {fileID: -5995802156552172810}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -34,33 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8556408690134917712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8448589595082477034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afa71d8e33330c347b972ab0c8feffab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GM: {fileID: 11400000, guid: 0d82f9c9e7433ba43bfff5fc00ded3ca, type: 2}
-  patrolPoints:
-  - {fileID: 5900907163842253240, guid: 4c254908d037bfd4486a9e9ea0bd8b31, type: 3}
-  - {fileID: 7460406069246609318, guid: 7c3075b185be0d34386b3b32edcb4fde, type: 3}
-  - {fileID: 3916972360067349500, guid: fa73c6c5b2713b54c8810928d7287c01, type: 3}
-  - {fileID: 2124948706976448983, guid: 980af2d5fa019bf41be8f02ace823d51, type: 3}
-  - {fileID: 4059101349474627693, guid: 6a2049e8293ac4346ae9d12032ba0c4b, type: 3}
-  - {fileID: 2630786178381613185, guid: 13c708b4ca0181d46b516d391aebec6b, type: 3}
-  - {fileID: 4651691790573239271, guid: 1a6694cba6a7765449a6d8fa061e80bf, type: 3}
-  - {fileID: 1634093911378870402, guid: dee6a1fc590b53f4d998d134151c730a, type: 3}
-  enemiesCount: 0
-  movementSpeed: 0.6
-  rotationSpeed: 6
-  health: 10
-  index: 0
 --- !u!54 &9064354237478261721
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -90,6 +63,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.21, y: 20.68, z: 30.85}
   m_Center: {x: 0, y: 10.07, z: -2.27}
+--- !u!114 &-5995802156552172810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448589595082477034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ebf1433726a404c8818bce456b90a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 11400000, guid: 0d82f9c9e7433ba43bfff5fc00ded3ca, type: 2}
+  patrolPoints:
+  - {fileID: 5900907163842253240, guid: 4c254908d037bfd4486a9e9ea0bd8b31, type: 3}
+  - {fileID: 7460406069246609318, guid: 7c3075b185be0d34386b3b32edcb4fde, type: 3}
+  - {fileID: 3916972360067349500, guid: fa73c6c5b2713b54c8810928d7287c01, type: 3}
+  - {fileID: 2124948706976448983, guid: 980af2d5fa019bf41be8f02ace823d51, type: 3}
+  - {fileID: 4059101349474627693, guid: 6a2049e8293ac4346ae9d12032ba0c4b, type: 3}
+  - {fileID: 2630786178381613185, guid: 13c708b4ca0181d46b516d391aebec6b, type: 3}
+  - {fileID: 4651691790573239271, guid: 1a6694cba6a7765449a6d8fa061e80bf, type: 3}
+  - {fileID: 1634093911378870402, guid: dee6a1fc590b53f4d998d134151c730a, type: 3}
+  movementSpeed: 0.6
+  rotationSpeed: 6
+  health: 10
+  index: 0
 --- !u!1001 &6964875786433274060
 PrefabInstance:
   m_ObjectHideFlags: 0

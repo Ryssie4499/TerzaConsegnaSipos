@@ -460,7 +460,7 @@ MonoBehaviour:
   cc: {fileID: 8322203986371099789}
   range: 8
   rateOfFire: 2
-  bullet: {fileID: 7433560916124248661, guid: 994ea3a9e719907489b5fbe88c6f0b40, type: 3}
+  bullet: {fileID: 3888474238977095402, guid: 25b5b5fb91aeda849a73a5e66928059d, type: 3}
   bulletDamage: 4
   bulletSpeed: 2
   rotationSpeed: 8

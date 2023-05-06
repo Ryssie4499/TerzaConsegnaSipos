@@ -50,7 +50,7 @@ public class EnemyManager : MonoBehaviour
             health -= Damage;
             if (health <= 0)
             {
-                gameObject.SetActive(false);
+                Destroy(gameObject);
                 OnEnemyDeath?.Invoke();
             }
         }
