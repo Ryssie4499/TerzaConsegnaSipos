@@ -3004,7 +3004,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: Buns, is the fastest and the cutest rabbit of the village. If you're bored
-    of your constant fight against forest animals, he will make time flow faster.
+    of your never-ending fight against forest animals, he will make time flow faster.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8780,9 +8780,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: While you're placing Turrets, animals will try to reach your village to
-    destroy it. Whenever an enemy reaches your tribe, you will lose a feather. But
-    for every 20 animals killed you will regain one of them. Keep an eye on the animal
-    skull count, it could save your life.
+    destroy it. Whenever an enemy reaches your tribe, you will lose a feather. Even
+    though, for every 20 animals you kill, you will regain one of them. Keep an eye
+    on the animal skull count, it may save your life.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8809,7 +8809,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 94.75
+  m_fontSize: 91.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10190,11 +10190,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Let me introduce two other members of our tribe: Buns and Turty.
+  m_text: 'Let me introduce you to the other two members of our tribe: Buns and Turty.
 
     They''re
-    the best friends I''ve ever seen, but if you''re trying to find some similarities,
-    you''re surely wasting time.'
+    the best friends I''ve ever seen, but if you''re trying to find some similarities
+    between them, you''re surely wasting your time.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12933,7 +12933,6 @@ MonoBehaviour:
   num: 0
   accelerate: 0
   turtle: 0
-  timer: 0
   GM: {fileID: 11400000, guid: 0d82f9c9e7433ba43bfff5fc00ded3ca, type: 2}
 --- !u!1 &1210198257
 GameObject:
@@ -17389,8 +17388,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: What about Turty? She's so pretty that everyone would slow down to see
-    her, on the other hand she's also so slow that before you see her, you'll have
-    to wait for long time.
+    her, on the other hand she's so slow that you'll have to wait for a long time
+    before you'll be able to see her.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17909,7 +17908,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: But Buffs need to have at least a Turret below them to be placed correctly.
+  m_text: Buffs need to have at least a Turret below them in order to be placed correctly.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17936,7 +17935,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 92.7
+  m_fontSize: 87.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
