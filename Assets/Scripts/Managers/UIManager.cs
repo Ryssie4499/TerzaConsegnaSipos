@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour
     public GameObject GuideCanvas;
     public GameObject PauseCanvas;
     public GameObject EndCanvas;
+    public GameObject Page1;
+    public GameObject Page2;
+    public GameObject Page3;
     public GameObject[] lights;
 
     public Text enemies;
@@ -22,6 +25,7 @@ public class UIManager : MonoBehaviour
 
     [HideInInspector] public int num;
     public bool accelerate;
+    public bool turtle;
 
     InputManager IM;
     public GameManager GM;
@@ -40,7 +44,7 @@ public class UIManager : MonoBehaviour
         {
             enemies.text = StatsManager.Instance.Score.ToString();
 
-            if(StatsManager.Instance.Score%20 == 0)
+            if (StatsManager.Instance.Score % 20 == 0)
             {
                 StatsManager.Instance.Healing();
             }
@@ -72,7 +76,7 @@ public class UIManager : MonoBehaviour
         {
             StartCanvas.SetActive(true);
         }
-        if(GM.gameStatus == GameManager.GameStatus.gameEnd)
+        if (GM.gameStatus == GameManager.GameStatus.gameEnd)
         {
             EndCanvas.SetActive(true);
         }
@@ -147,6 +151,9 @@ public class UIManager : MonoBehaviour
     {
         StartCanvas.SetActive(false);
         GuideCanvas.SetActive(false);
+        Page1.SetActive(true);
+        Page2.SetActive(false);
+        Page3.SetActive(false);
         PauseCanvas.SetActive(false);
         GM.gameStatus = GameManager.GameStatus.gameRunning;
     }
@@ -161,12 +168,26 @@ public class UIManager : MonoBehaviour
 
     public void NEXTGUIDE()
     {
-
+        Page1.SetActive(false);
+        Page2.SetActive(true);
     }
 
     public void LASTGUIDE()
     {
+        Page2.SetActive(false);
+        Page3.SetActive(true);
+    }
 
+    public void PREVIOUSGUIDE()
+    {
+        Page3.SetActive(false);
+        Page2.SetActive(true);
+    }
+
+    public void FIRSTGUIDE()
+    {
+        Page2.SetActive(false);
+        Page1.SetActive(true);
     }
 
     public void RESTART()
@@ -177,6 +198,13 @@ public class UIManager : MonoBehaviour
     public void EXIT()
     {
         Application.Quit();
+    }
+
+    public void Turtle()
+    {
+        Debug.Log("Turtle!");
+        turtle = true;
+
     }
     public void Accelerate()
     {
@@ -190,6 +218,6 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1f;
             accelerate = false;
         }
-        
+
     }
 }

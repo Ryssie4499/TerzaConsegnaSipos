@@ -7,7 +7,6 @@ public class EnemyManager : MonoBehaviour
 {
     public static event Action OnFinishLineReached;
     public static event Action OnEnemyDeath;
-    public GameManager GM;
     [SerializeField]
     public GameObject[] patrolPoints;
 
@@ -15,8 +14,13 @@ public class EnemyManager : MonoBehaviour
     public float rotationSpeed;
 
     public float health; // health & damage
+
+    public float timer;
+    UIManager UM;
+    public GameManager GM;
     private void Start()
     {
+        UM = FindObjectOfType<UIManager>();
         transform.position = patrolPoints[0].transform.position;
     }
 
@@ -29,7 +33,21 @@ public class EnemyManager : MonoBehaviour
     public int index = 0;
     void MoveAround()
     {
-        transform.position = Vector3.MoveTowards(transform.position, patrolPoints[index].transform.position, movementSpeed);
+        if (UM.turtle)
+        {
+            timer += Time.deltaTime;
+            if (timer < 7)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, patrolPoints[index].transform.position, 0.2f);
+            }
+            else
+            {
+                UM.turtle = false;
+                timer = 0;
+            }
+        }
+        else
+            transform.position = Vector3.MoveTowards(transform.position, patrolPoints[index].transform.position, movementSpeed);
 
         Vector3 targetDirection = patrolPoints[index].transform.position - transform.position;
         float singleStep = rotationSpeed * Time.deltaTime;
