@@ -18,9 +18,11 @@ public class TurretManager : MonoBehaviour
     public float bulletSpeed;
     public float rotationSpeed;
     public List<EnemyManager> targetsInRange = new List<EnemyManager>();
+    EnemyManager EM;
     public GameManager GM;
     private void Start()
     {
+        EM = FindObjectOfType<EnemyManager>();
         cc.radius = range;
         cc.height = range;
     }
@@ -46,12 +48,15 @@ public class TurretManager : MonoBehaviour
                 Shoot();
                 target = null;
             }
-            foreach (EnemyManager enemy in targetsInRange)
+            if (EM != null)
             {
-                Vector3 targetDirection = enemy.transform.position - transform.position;
-                float singleStep = rotationSpeed * Time.deltaTime;
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-                transform.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, 0, newDirection.z));
+                foreach (EnemyManager enemy in targetsInRange)
+                {
+                    Vector3 targetDirection = enemy.transform.position - transform.position;
+                    float singleStep = rotationSpeed * Time.deltaTime;
+                    Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+                    transform.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, 0, newDirection.z));
+                }
             }
         }
     }
