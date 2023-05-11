@@ -12,11 +12,16 @@ public class trackingBullet : MonoBehaviour
     {
         if (GM.gameStatus == GameManager.GameStatus.gameRunning)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position + new Vector3(0, 5, 0), bulletSpeed);
-
-            if (transform.position == target.transform.position + new Vector3(0, 5, 0))
-            {
+            if (target != null)
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position + new Vector3(0, 5, 0), bulletSpeed);
+            else
                 Destroy(gameObject);
+            if (target != null)
+            {
+                if (transform.position == target.transform.position + new Vector3(0, 5, 0))
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
@@ -29,7 +34,7 @@ public class trackingBullet : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == target.gameObject)
+        if (target!=null && other.gameObject == target.gameObject)
         {
             other.GetComponent<EnemyManager>().Damage(bulletDamage);
             Destroy(this.gameObject);

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1078215579932600893}
   - component: {fileID: 4219878947045094546}
   - component: {fileID: 7326631245861956150}
-  - component: {fileID: -1535685704435714886}
+  - component: {fileID: 965412206016238212}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4789831972524675169}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 213.1, y: 0, z: -298.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3265834317403198467}
@@ -63,7 +63,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 33.47, y: 34.1, z: 20.09}
   m_Center: {x: 0, y: 17.2, z: -1.2}
---- !u!114 &-1535685704435714886
+--- !u!114 &965412206016238212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,7 +75,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ebf1433726a404c8818bce456b90a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GM: {fileID: 11400000, guid: 0d82f9c9e7433ba43bfff5fc00ded3ca, type: 2}
   patrolPoints:
   - {fileID: 1424119572349136977, guid: dfce6387d1e37cb46a088f89db8a59af, type: 3}
   - {fileID: 6316656417981510765, guid: bea5289505608a74bb2c6817dcf32a45, type: 3}
@@ -87,7 +86,9 @@ MonoBehaviour:
   - {fileID: 2345675833778468560, guid: 3c1fe5b139404d948a4e0a8622f47c09, type: 3}
   movementSpeed: 0.8
   rotationSpeed: 6
-  health: 5
+  health: 8
+  timer: 0
+  GM: {fileID: 11400000, guid: 0d82f9c9e7433ba43bfff5fc00ded3ca, type: 2}
   index: 0
 --- !u!1001 &3269023869615096319
 PrefabInstance:

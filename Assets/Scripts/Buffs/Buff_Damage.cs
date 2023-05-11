@@ -16,7 +16,7 @@ public class Buff_Damage : BuffManager
             base.Update();
             foreach (TurretManager turret in bpC.turretComponents)
             {
-                turret.bulletDamage = 4;
+                turret.bulletDamage = 3;
             }
         }
     }

@@ -7,24 +7,22 @@ public class EnemyManager : MonoBehaviour
 {
     public static event Action OnFinishLineReached;
     public static event Action OnEnemyDeath;
-    [SerializeField]
-    public GameObject[] patrolPoints;
+    [SerializeField] public GameObject[] patrolPoints;
 
     public float movementSpeed; // velocity molt
     public float rotationSpeed;
 
     public float health; // health & damage
-
     public float timer;
-    UIManager UM;
+    InputManager IM;
     public GameManager GM;
-    private void Start()
+
+    protected virtual void Start()
     {
-        UM = FindObjectOfType<UIManager>();
-        transform.position = patrolPoints[0].transform.position;
+        IM = FindObjectOfType<InputManager>();
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (GM.gameStatus == GameManager.GameStatus.gameRunning)
             MoveAround();
@@ -33,7 +31,7 @@ public class EnemyManager : MonoBehaviour
     public int index = 0;
     void MoveAround()
     {
-        if (UM.turtle)
+        if (IM.turtle)
         {
             timer += Time.deltaTime;
             if (timer < 7)
@@ -42,7 +40,9 @@ public class EnemyManager : MonoBehaviour
             }
             else
             {
-                UM.turtle = false;
+                IM.used = true;
+                IM.turtle = false;
+                IM.Turtle.SetActive(false);
                 timer = 0;
             }
         }

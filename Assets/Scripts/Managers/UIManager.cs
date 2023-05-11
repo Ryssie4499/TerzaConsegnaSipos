@@ -25,7 +25,6 @@ public class UIManager : MonoBehaviour
 
     [HideInInspector] public int num;
     public bool accelerate;
-    public bool turtle;
 
     InputManager IM;
     public GameManager GM;
@@ -35,6 +34,7 @@ public class UIManager : MonoBehaviour
         IM = FindObjectOfType<InputManager>();
         GM.gameStatus = GameManager.GameStatus.gameStart;
     }
+
     void Update()
     {
         record.text = StatsManager.Instance.HighScore.ToString();
@@ -43,10 +43,14 @@ public class UIManager : MonoBehaviour
         if (GM.gameStatus == GameManager.GameStatus.gameRunning)
         {
             enemies.text = StatsManager.Instance.Score.ToString();
-
-            if (StatsManager.Instance.Score % 20 == 0)
+            
+            if (StatsManager.Instance.Score % 20 == 0 && StatsManager.Instance.Score != 0)
             {
                 StatsManager.Instance.Healing();
+            }
+            else
+            {
+                StatsManager.Instance.healing = false;
             }
             if (IM.placeIt)
             {
@@ -202,9 +206,7 @@ public class UIManager : MonoBehaviour
 
     public void Turtle()
     {
-        Debug.Log("Turtle!");
-        turtle = true;
-
+        IM.turtle = true;
     }
     public void Accelerate()
     {

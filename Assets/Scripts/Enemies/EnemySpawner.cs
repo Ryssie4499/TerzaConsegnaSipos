@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public int callsBeforeRateIncrease = 5;
     float rateTimer;
     int callCounter = 0;
+    public int enemyCounter;
     public GameManager GM;
     void Start()
     {
@@ -32,13 +33,32 @@ public class EnemySpawner : MonoBehaviour
     {
         callCounter++;                                                              //ad ogni spawn aumenta il conteggio e quando raggiunge quello di rateIncrease, aumenta il rate
 
-        GameObject Enemy = Instantiate(Enemies[Random.Range(0, Enemies.Length)], transform.position, Quaternion.identity);
-
-        if (callCounter >= callsBeforeRateIncrease && rate >= 2 * rateIncreasing)   //il rate si velocizza solo fin quando sarà maggiore di zero, dopo non ha più senso (auguri a chiudere i popup alla velocità della luce)
+        GameObject Enemy = Instantiate(Enemies[Random.Range(0, Enemies.Length)], gameObject.transform.position, Quaternion.identity);
+        enemyCounter++;
+        if (callCounter >= callsBeforeRateIncrease && rate >= 2 * rateIncreasing)   //il rate si velocizza solo fin quando sarà maggiore di zero, dopo non ha più senso
         {
             rate -= rateIncreasing;
             callCounter = 0;
         }
         rateTimer = rate;
+    }
+    int multiplier = 1;
+    int counter;
+    private void OnTriggerExit(Collider other)
+    {
+        if (multiplier < 60)
+        {
+            if (enemyCounter >= multiplier * 4)
+            {
+                counter = 4 * (multiplier + 1);
+                if (enemyCounter < counter)
+                {
+                    other.GetComponent<EnemyManager>().health += multiplier + 2;
+                    Debug.Log(other.GetComponent<EnemyManager>().health);
+                }
+                else
+                    multiplier++;
+            }
+        }
     }
 }

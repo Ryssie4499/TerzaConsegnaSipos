@@ -14,14 +14,11 @@ public class BuffManager : MonoBehaviour
     public float rotationSpeed;
     public List<EnemyManager> targetsInRange = new List<EnemyManager>();
     public GameManager GM;
-    protected virtual void OnValidate()
-    {
-        cc.radius = range;
-        cc.height = range;
-    }
 
     protected virtual void Update()
     {
+        cc.radius = range;
+        cc.height = range;
         if (GM.gameStatus == GameManager.GameStatus.gameRunning)
         {
             CheckTargetsInRange();
@@ -34,10 +31,13 @@ public class BuffManager : MonoBehaviour
             }
             foreach (EnemyManager enemy in targetsInRange)
             {
-                Vector3 targetDirection = enemy.transform.position - transform.position;
-                float singleStep = rotationSpeed * Time.deltaTime;
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-                transform.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, 0, newDirection.z));
+                if (enemy != null)
+                {
+                    Vector3 targetDirection = enemy.transform.position - transform.position;
+                    float singleStep = rotationSpeed * Time.deltaTime;
+                    Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+                    transform.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, 0, newDirection.z));
+                }
             }
         }
     }
@@ -75,7 +75,10 @@ public class BuffManager : MonoBehaviour
 
     protected virtual float GetDistance(EnemyManager target)
     {
-        return Vector3.Distance(this.transform.position, target.transform.position);
+        if (target != null)
+            return Vector3.Distance(this.transform.position, target.transform.position);
+        else
+            return 0;
     }
 
     protected virtual void OnTriggerEnter(Collider other)

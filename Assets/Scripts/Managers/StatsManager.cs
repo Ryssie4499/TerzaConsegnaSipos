@@ -8,10 +8,10 @@ public class StatsManager : MonoBehaviour
     public static StatsManager Instance { get => instance; private set => instance = value; }
 
     private static int highScore = 0;
-
     public int Health { get; private set; }
     public int Score { get; private set; }
     public int HighScore { get => highScore; }
+    public bool healing;
     public GameManager GM;
     private void Awake()
     {
@@ -19,7 +19,10 @@ public class StatsManager : MonoBehaviour
         Health = 5;
         Score = 0;
     }
+    private void Update()
+    {
 
+    }
     private void OnEnable()
     {
         EnemyManager.OnFinishLineReached += TakeDamage;
@@ -45,9 +48,14 @@ public class StatsManager : MonoBehaviour
     {
         if (Health < 5)
         {
-            Health++;
+            if (healing == false)
+            {
+                Health++;
+                healing = true;
+            }
         }
     }
+
     private void ScoreUp()
     {
         Score++;

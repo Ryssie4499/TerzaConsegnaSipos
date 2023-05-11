@@ -18,19 +18,15 @@ public class TurretManager : MonoBehaviour
     public float bulletSpeed;
     public float rotationSpeed;
     public List<EnemyManager> targetsInRange = new List<EnemyManager>();
-    EnemyManager EM;
+
     public GameManager GM;
-    private void Start()
-    {
-        EM = FindObjectOfType<EnemyManager>();
-        cc.radius = range;
-        cc.height = range;
-    }
 
     private void Update()
     {
         if (GM.gameStatus == GameManager.GameStatus.gameRunning)
         {
+            cc.radius = range;
+            cc.height = range;
             CheckTargetsInRange();
 
             if (!triggerTimer)
@@ -48,9 +44,9 @@ public class TurretManager : MonoBehaviour
                 Shoot();
                 target = null;
             }
-            if (EM != null)
+            foreach (EnemyManager enemy in targetsInRange)
             {
-                foreach (EnemyManager enemy in targetsInRange)
+                if (enemy != null)
                 {
                     Vector3 targetDirection = enemy.transform.position - transform.position;
                     float singleStep = rotationSpeed * Time.deltaTime;

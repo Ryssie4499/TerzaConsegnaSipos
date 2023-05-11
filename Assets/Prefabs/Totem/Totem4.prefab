@@ -461,7 +461,7 @@ MonoBehaviour:
   range: 8
   rateOfFire: 2
   bullet: {fileID: 3888474238977095402, guid: 25b5b5fb91aeda849a73a5e66928059d, type: 3}
-  bulletDamage: 4
+  bulletDamage: 3
   bulletSpeed: 2
   rotationSpeed: 8
   targetsInRange: []
