@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public GameObject Page1;
     public GameObject Page2;
     public GameObject Page3;
+    public GameObject[] tips;
     public GameObject[] lights;
 
     public Text enemies;
@@ -31,6 +32,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        tips[Random.Range(0, 3)].SetActive(true);
         IM = FindObjectOfType<InputManager>();
         GM.gameStatus = GameManager.GameStatus.gameStart;
     }
@@ -43,7 +45,7 @@ public class UIManager : MonoBehaviour
         if (GM.gameStatus == GameManager.GameStatus.gameRunning)
         {
             enemies.text = StatsManager.Instance.Score.ToString();
-            
+
             if (StatsManager.Instance.Score % 20 == 0 && StatsManager.Instance.Score != 0)
             {
                 StatsManager.Instance.Healing();
