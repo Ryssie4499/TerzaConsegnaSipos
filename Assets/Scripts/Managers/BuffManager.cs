@@ -9,14 +9,19 @@ public class BuffManager : MonoBehaviour
 
     public CapsuleCollider cc;
 
+    public GameObject fire;
+
     [Header("Setup Turret:")]
     public float range;
     public float rotationSpeed;
     public List<EnemyManager> targetsInRange = new List<EnemyManager>();
     public GameManager GM;
-
     protected virtual void Update()
     {
+        if (transform.position.y > 27)
+        {
+            fire.SetActive(true);
+        }
         cc.radius = range;
         cc.height = range;
         if (GM.gameStatus == GameManager.GameStatus.gameRunning)

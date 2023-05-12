@@ -11,11 +11,14 @@ public class UIManager : MonoBehaviour
     public GameObject GuideCanvas;
     public GameObject PauseCanvas;
     public GameObject EndCanvas;
+    public GameObject ButtonOn, ButtonOff;
     public GameObject Page1;
     public GameObject Page2;
     public GameObject Page3;
     public GameObject[] tips;
     public GameObject[] lights;
+
+    public AudioSource Soundtrack;
 
     public Text enemies;
     public TextMeshProUGUI record;
@@ -26,13 +29,15 @@ public class UIManager : MonoBehaviour
 
     [HideInInspector] public int num;
     public bool accelerate;
+    public bool sfxOn;
 
     InputManager IM;
     public GameManager GM;
 
     private void Start()
     {
-        tips[Random.Range(0, 3)].SetActive(true);
+        sfxOn = true;
+        tips[Random.Range(0, 4)].SetActive(true);
         IM = FindObjectOfType<InputManager>();
         GM.gameStatus = GameManager.GameStatus.gameStart;
     }
@@ -223,5 +228,22 @@ public class UIManager : MonoBehaviour
             accelerate = false;
         }
 
+    }
+    public void AUDIO()
+    {
+        if (sfxOn)
+        {
+            Soundtrack.volume = 0;
+            ButtonOff.SetActive(true);
+            ButtonOn.SetActive(false);
+            sfxOn = false;
+        }
+        else
+        {
+            Soundtrack.volume = 1;
+            ButtonOff.SetActive(false);
+            ButtonOn.SetActive(true);
+            sfxOn = true;
+        }
     }
 }

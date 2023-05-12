@@ -8,6 +8,8 @@ public class TurretManager : MonoBehaviour
 
     public CapsuleCollider cc;
 
+    public GameObject fire;
+
     [Header("Setup Turret:")]
     public float range;
     public float rateOfFire;
@@ -20,7 +22,13 @@ public class TurretManager : MonoBehaviour
     public List<EnemyManager> targetsInRange = new List<EnemyManager>();
 
     public GameManager GM;
-
+    private void Start()
+    {
+        if (transform.position.y > 27)
+        {
+            fire.SetActive(true);
+        }
+    }
     private void Update()
     {
         if (GM.gameStatus == GameManager.GameStatus.gameRunning)

@@ -46,19 +46,16 @@ public class EnemySpawner : MonoBehaviour
     int counter;
     private void OnTriggerExit(Collider other)
     {
-        if (multiplier < 60)
+        if (enemyCounter >= multiplier * 4)
         {
-            if (enemyCounter >= multiplier * 4)
+            counter = 4 * (multiplier + 1);
+            if (enemyCounter < counter)
             {
-                counter = 4 * (multiplier + 1);
-                if (enemyCounter < counter)
-                {
-                    other.GetComponent<EnemyManager>().health += multiplier + 2;
-                    Debug.Log(other.GetComponent<EnemyManager>().health);
-                }
-                else
-                    multiplier++;
+                other.GetComponent<EnemyManager>().health += multiplier + 4;
+                //Debug.Log(other.GetComponent<EnemyManager>().health);
             }
+            else
+                multiplier++;
         }
     }
 }

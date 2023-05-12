@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     public float randomicTimer;
     public bool turtle;
     public bool used;
+    public bool max;
     public float rate;
     UIManager UM;
     public GameManager GM;
@@ -39,7 +40,7 @@ public class InputManager : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, placeMask | pedana))                  //se si tratta di una pedana o di una torretta
             {
-                if (hit.transform.position.y < 50)
+                if (hit.transform.position.y < 31)
                 {
                     Instantiate(turrets[num], hit.transform.position, Quaternion.identity);         //istanzio la torretta corrispondente nella posizione cliccata con il mouse
                     foreach (GameObject light in UM.lights)
@@ -61,7 +62,7 @@ public class InputManager : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, placeMask))                           //se si tratta di una torretta
             {
-                if (hit.transform.position.y < 32)
+                if (hit.transform.position.y < 31)
                 {
                     Instantiate(turrets[num], hit.transform.position, Quaternion.identity);         //istanzio il buff corrispondente nella posizione cliccata con il mouse
                     foreach (GameObject light in UM.lights)
@@ -106,7 +107,17 @@ public class InputManager : MonoBehaviour
             Duck.SetActive(true);
         if (timer >= 95 && used == false)
             Turtle.SetActive(true);
-        if (timer >= 120)
+        if(placementCounter == 25)
+        {
+            max = true;
+            Koala.SetActive(false);
+            Frog.SetActive(false);
+            Monkey.SetActive(false);
+            Eagle.SetActive(false);
+            Duck.SetActive(false);
+            Elephant.SetActive(false);
+        }
+        if (timer >= 120 && max == false)
         {
             randomicTimer += Time.deltaTime;
             if (randomicTimer >= rate)
@@ -136,11 +147,5 @@ public class InputManager : MonoBehaviour
                 randomicTimer = 0;
             }
         }
-        //if(placementCounter == 13 && timer>= 135)
-        //    Duck.SetActive(true);
-        //if (timer >= 145)
-        //    Eagle.SetActive(true);
-        //if(timer >= 155)
-        //    Monkey.Set
     }
 }
