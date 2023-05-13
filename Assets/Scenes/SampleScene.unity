@@ -1131,7 +1131,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 08bf32ce25600bb4797e4420364459d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 438722d9b5588f74aab1131fb7437f50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2134,7 +2134,7 @@ AudioSource:
   m_GameObject: {fileID: 175091986}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 155ce830fc69457418933640e76de437, type: 2}
   m_audioClip: {fileID: 8300000, guid: faf56326aee767d4e80f9e5576cfaebf, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -11852,7 +11852,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 08bf32ce25600bb4797e4420364459d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 438722d9b5588f74aab1131fb7437f50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
