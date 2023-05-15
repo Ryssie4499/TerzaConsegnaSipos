@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    public LayerMask placeMask;
-    public LayerMask pedana;
-    public GameObject[] turrets;
-    [HideInInspector] public bool placeIt;
-    [HideInInspector] public bool buffPlaceIt;
-    [HideInInspector] public int placementCounter;
-    public GameObject Monkey, Duck, Elephant, Frog, Eagle, Koala, Turtle;
-    public float timer;
-    public float randomicTimer;
-    public bool turtle;
-    public bool used;
-    public bool max;
-    public float rate;
+    [HideInInspector] public bool placeIt;              //la condizione secondo la quale posso o non posso posizionare una torretta
+    [HideInInspector] public bool buffPlaceIt;          //la condizione secondo la quale posso o non posso posizionare un buff
+    [HideInInspector] public bool turtle;               //tartaruga attiva o disattiva
+    [HideInInspector] public bool used;                 //tartaruga usata o non usata
+    [HideInInspector] public bool max;                  //il massimo di torrette piazzabili è/non è stato raggiunto
+
+    [HideInInspector] public int placementCounter;      //torrette piazzate
+
+    [HideInInspector] public float timer;               //timer di gioco (ogni quanto si può piazzare una torretta)
+    [HideInInspector] public float randomicTimer;       //timer dell'ultima wave (ogni quanto si può piazzare le ultime torrette randomiche)
+
+    public LayerMask placeMask;                         //layer dove si possono piazzare sia buff che torrette (sopra le torrette e i buff)
+    public LayerMask platform;                          //layer dove si possono piazzare solo le torrette (sopra le pedane)
+
+    public GameObject[] turrets;                        //le torrette
+    public GameObject Monkey, Duck, Elephant, Frog, Eagle, Koala, Turtle;   //i pulsanti
+
+    public float rate;                                  //il rate tra l'attivazione di un pulsante randomico e l'altro
+
+    //Refs
     UIManager UM;
     public GameManager GM;
     void Start()
@@ -26,24 +33,26 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        if (GM.gameStatus == GameManager.GameStatus.gameRunning)
+        if (GM.gameStatus == GameManager.GameStatus.gameRunning)                                    //in running
         {
-            timer += Time.deltaTime;
-            Activation();
+            timer += Time.deltaTime;                                                                //parte un timer
+            Activation();                                                                           //e cominciano ad attivarsi i pulsanti delle torrette disponibili
         }
     }
+
+    //creo un metodo per piazzare le torrette
     public void Placement(int num)
     {
         if (Input.GetButtonDown("Mouse0"))                                                          //col tasto sinistro del mouse
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);                            //faccio partire un raggio dalla camera al punto esatto sul quale è posizionato il mouse
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, placeMask | pedana))                  //se si tratta di una pedana o di una torretta
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, placeMask | platform))                //se si tratta di una pedana o di una torretta
             {
-                if (hit.transform.position.y < 31)
+                if (hit.transform.position.y < 31)                                                  //e se la posizione del cursore è sotto i 31 di altezza
                 {
                     Instantiate(turrets[num], hit.transform.position, Quaternion.identity);         //istanzio la torretta corrispondente nella posizione cliccata con il mouse
-                    foreach (GameObject light in UM.lights)
+                    foreach (GameObject light in UM.lights)                                         //e tutte le luci della lista si spengono
                     {
                         light.SetActive(false);
                     }
@@ -54,28 +63,32 @@ public class InputManager : MonoBehaviour
             }
         }
     }
+
+    //creo un metodo per piazzare i buff
     public void BuffPlacement(int num)
     {
         if (Input.GetButtonDown("Mouse0"))                                                          //col tasto sinistro del mouse
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);                            //faccio partire un raggio dalla camera al punto esatto sul quale è posizionato il mouse
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, placeMask))                           //se si tratta di una torretta
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, placeMask))                           //se si tratta di una torretta o di un buff
             {
-                if (hit.transform.position.y < 31)
+                if (hit.transform.position.y < 31)                                                  //e se si trova sotto i 31 di altezza
                 {
                     Instantiate(turrets[num], hit.transform.position, Quaternion.identity);         //istanzio il buff corrispondente nella posizione cliccata con il mouse
-                    foreach (GameObject light in UM.lights)
+                    foreach (GameObject light in UM.lights)                                         //e tutte le luci della lista si spengono
                     {
                         light.SetActive(false);
                     }
-                    Destroy(hit.transform.gameObject);                                              //elimino il collider sotto il buff appena piazzata così non si può più piazzarvi sopra altre torrette
+                    Destroy(hit.transform.gameObject);                                              //elimino il collider sotto il buff appena piazzato così non si può più piazzarvi sopra altre torrette
                     buffPlaceIt = false;                                                            //una volta piazzato il buff non ne posso piazzare altri dello stesso tipo senza ricliccare sull'icona corrispondente
                     placementCounter++;                                                             //il conteggio delle torrette e dei buff piazzati aumenta
                 }
             }
         }
     }
+
+    //attivazione dei pulsanti per un gameflow equilibrato
     public void Activation()
     {
         int index = 0;
@@ -117,10 +130,12 @@ public class InputManager : MonoBehaviour
             Duck.SetActive(false);
             Elephant.SetActive(false);
         }
+
+        //dopo i 120 secondi, se non è ancora stato raggiunto il numero massimo di torrette piazzate
         if (timer >= 120 && max == false)
         {
-            randomicTimer += Time.deltaTime;
-            if (randomicTimer >= rate)
+            randomicTimer += Time.deltaTime;        //parte un nuovo timer
+            if (randomicTimer >= rate)              //e ogni tot secondi attiva randomicamente uno dei pulsanti, anche se dovesse essere già attivo (per dare un po' più di difficoltà al gioco che sta volgendo al termine)
             {
                 index = Random.Range(0, 6);
                 switch (index)
@@ -147,5 +162,6 @@ public class InputManager : MonoBehaviour
                 randomicTimer = 0;
             }
         }
+        //una volta raggiunto il numero massimo di torrette piazzabili, non si può far altro che rallentare i nemici con la tartaruga e accelerare i tempi con il coniglio, in attesa della propria sconfitta
     }
 }

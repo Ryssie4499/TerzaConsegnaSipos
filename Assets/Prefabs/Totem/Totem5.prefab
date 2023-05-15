@@ -63,11 +63,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ade5fbc11f2af42aad471c9928c5cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cc: {fileID: 1338510748117639977}
-  fire: {fileID: 8383211473693226405}
   range: 8
   rotationSpeed: 8
   targetsInRange: []
+  fire: {fileID: 8383211473693226405}
+  cc: {fileID: 1338510748117639977}
   GM: {fileID: 11400000, guid: 0d82f9c9e7433ba43bfff5fc00ded3ca, type: 2}
 --- !u!1 &340021993651375020
 GameObject:
@@ -714,11 +714,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6928458153528979022, guid: 05ce920d629922a4eb4795ef7494ce5c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6928458153528979022, guid: 05ce920d629922a4eb4795ef7494ce5c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6928458153528979022, guid: 05ce920d629922a4eb4795ef7494ce5c, type: 3}
       propertyPath: m_LocalPosition.x

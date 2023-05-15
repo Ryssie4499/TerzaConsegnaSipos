@@ -129,15 +129,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c902df1cd3890a0409afa2d84786e440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cc: {fileID: -4994607524317423835}
-  fire: {fileID: 2357246446171360513}
   range: 8
-  rateOfFire: 0.5
-  bullet: {fileID: 4459387301169494875, guid: 39043ac6b40f5e34e91a583d6dce1f0f, type: 3}
-  bulletDamage: 1
-  bulletSpeed: 2
   rotationSpeed: 8
   targetsInRange: []
+  fire: {fileID: 2357246446171360513}
+  bullet: {fileID: 4459387301169494875, guid: 39043ac6b40f5e34e91a583d6dce1f0f, type: 3}
+  rateOfFire: 0.5
+  bulletDamage: 1
+  bulletSpeed: 2
+  cc: {fileID: -4994607524317423835}
   GM: {fileID: 11400000, guid: 0d82f9c9e7433ba43bfff5fc00ded3ca, type: 2}
 --- !u!136 &-4994607524317423835
 CapsuleCollider:
@@ -887,11 +887,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6928458153528979022, guid: 05ce920d629922a4eb4795ef7494ce5c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6928458153528979022, guid: 05ce920d629922a4eb4795ef7494ce5c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6928458153528979022, guid: 05ce920d629922a4eb4795ef7494ce5c, type: 3}
       propertyPath: m_LocalPosition.x
